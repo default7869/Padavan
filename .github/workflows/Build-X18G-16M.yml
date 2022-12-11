@@ -1,5 +1,5 @@
 #修改TNAME: K2P 中的K2P为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
-name: Build X18G-16M-128M-SSP
+name: Build X18G-16M-128M
 on: 
   workflow_dispatch:
   release:
@@ -67,11 +67,11 @@ jobs:
         #echo    "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CMD=n" >> .config #SOFTETHERVPN
         ################################################################################################
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS/d' .config #删除配置项SS plus+
-        echo    "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config #SS plus+
+        echo    "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=n" >> .config #SS plus+
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SSOBFS/d' .config #删除配置项simple-obfs混淆插件
-        echo    "CONFIG_FIRMWARE_INCLUDE_SSOBFS=y" >> .config # simple-obfs混淆插件
+        echo    "CONFIG_FIRMWARE_INCLUDE_SSOBFS=n" >> .config # simple-obfs混淆插件
         sed -i '/CONFIG_FIRMWARE_INCLUDE_XRAY/d' .config #删除配置项xray
-        echo    "CONFIG_FIRMWARE_INCLUDE_XRAY=y" >> .config #集成xray执行文件（4.2M左右)，如果不集成，???
+        echo    "CONFIG_FIRMWARE_INCLUDE_XRAY=n" >> .config #集成xray执行文件（4.2M左右)，如果不集成，???
         sed -i '/CONFIG_FIRMWARE_INCLUDE_V2RAY/d' .config #删除配置项v2ray
         echo    "CONFIG_FIRMWARE_INCLUDE_V2RAY=n" >> .config #集成v2ray执行文件（3.8M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
         sed -i '/CONFIG_FIRMWARE_INCLUDE_TROJAN/d' .config #删除配置项trojan
@@ -111,6 +111,11 @@ jobs:
         echo    "CONFIG_FIRMWARE_INCLUDE_WYY=n" >> .config #网易云解锁
         sed -i '/CONFIG_FIRMWARE_INCLUDE_WYYBIN/d' .config #删除配置项网易云解锁
         echo    "CONFIG_FIRMWARE_INCLUDE_WYYBIN=n" >> .config #网易云解锁GO版本执行文件（4M多）注意固件超大小,不集成会自动下载
+        ##########################################CPU超频###############################################################
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_OC/d' .config
+        echo    "CONFIG_FIRMWARE_INCLUDE_OC=y" >> .config #CPU超频开关
+        sed -i '/CONFIG_FIRMWARE_MT7621_OC/d' .config
+        echo    'CONFIG_FIRMWARE_MT7621_OC="0x362"' >> .config #此处填写对应频率的十六进制：1000Mhz=0x312 1100Mhz=0x362 1120Mhz=0x372 1200Mhz=0x3B2
         #########################################################################################
         #自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
         #格式如下：
