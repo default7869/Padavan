@@ -2,6 +2,7 @@
 #2022-12-12:工作需要增加VPN Server和VPN Client,增加openssl,openVPN,openSSH,xUPNPd,VLMCSD,ttyd,WIREGUARD（删除SSPlus,MT7621AT性能垃圾，翻墙用旁路由）
 name: Build X18G-16M-128M
 on: 
+  workflow_dispatch:
   release:
     types: [published]
   push:
