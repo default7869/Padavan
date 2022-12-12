@@ -68,11 +68,11 @@ jobs:
         echo    "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CMD=y" >> .config #SOFTETHERVPN
         ################################################################################################
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS/d' .config #删除配置项SS plus+
-        echo    "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config #SS plus+
+        echo    "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=n" >> .config #SS plus+
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SSOBFS/d' .config #删除配置项simple-obfs混淆插件
-        echo    "CONFIG_FIRMWARE_INCLUDE_SSOBFS=y" >> .config # simple-obfs混淆插件
+        echo    "CONFIG_FIRMWARE_INCLUDE_SSOBFS=n" >> .config # simple-obfs混淆插件
         sed -i '/CONFIG_FIRMWARE_INCLUDE_XRAY/d' .config #删除配置项xray
-        echo    "CONFIG_FIRMWARE_INCLUDE_XRAY=y" >> .config #集成xray执行文件（4.2M左右)，如果不集成，???
+        echo    "CONFIG_FIRMWARE_INCLUDE_XRAY=n" >> .config #集成xray执行文件（4.2M左右)，如果不集成，???
         sed -i '/CONFIG_FIRMWARE_INCLUDE_V2RAY/d' .config #删除配置项v2ray
         echo    "CONFIG_FIRMWARE_INCLUDE_V2RAY=n" >> .config #集成v2ray执行文件（3.8M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
         sed -i '/CONFIG_FIRMWARE_INCLUDE_TROJAN/d' .config #删除配置项trojan
@@ -116,12 +116,14 @@ jobs:
         echo    "CONFIG_FIRMWARE_INCLUDE_SMARTDNSBIN=n" >> .config #smartdns二进制文件
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SRELAY/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_SRELAY=n" >> .config #可以不集成
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENVPN/d' .config
-        echo    "CONFIG_FIRMWARE_INCLUDE_OPENVPN=y" >> .config #openVPN
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_SFTP/d' .config
+        echo    "CONFIG_FIRMWARE_INCLUDE_SFTP=y" >> .config #Include sftp-server. openssl ~1.2MB, sftp-server ~0.06MB
         sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENSSH/d' .config
-        echo    "CONFIG_FIRMWARE_INCLUDE_OPENSSH=y" >> .config #openssh
+        echo    "CONFIG_FIRMWARE_INCLUDE_OPENSSH=y" >> .config #Include OpenSSH instead of dropbear. openssl ~1.2MB, openssh ~1.0MB
         sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE/d' .config
-        echo    "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y" >> .config #openssl二进制文件
+        echo    "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y" >> .config #openssl二进制文件 ~1.2MB
+        sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENVPN/d' .config
+        echo    "CONFIG_FIRMWARE_INCLUDE_OPENVPN=y" >> .config #Include OpenVPN. IPv6 required. openssl ~1.2MB, openvpn ~0.4MB
         sed -i '/CONFIG_FIRMWARE_INCLUDE_TCPDUMP/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_TCPDUMP=n" >> .config #"tcpdump" utility. ~0.6MB
         sed -i '/CONFIG_FIRMWARE_INCLUDE_DOGCOM/d' .config
@@ -133,9 +135,9 @@ jobs:
         sed -i '/CONFIG_FIRMWARE_INCLUDE_NAPT66/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_NAPT66=n" >> .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_VLMCSD/d' .config
-        echo    "CONFIG_FIRMWARE_INCLUDE_VLMCSD=n" >> .config
+        echo    "CONFIG_FIRMWARE_INCLUDE_VLMCSD=y" >> .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_TTYD/d' .config
-        echo    "CONFIG_FIRMWARE_INCLUDE_TTYD=n" >> .config
+        echo    "CONFIG_FIRMWARE_INCLUDE_TTYD=y" >> .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_LRZSZ/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_LRZSZ=n" >> .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_HTOP/d' .config
@@ -149,14 +151,14 @@ jobs:
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SOCAT/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_SOCAT=n" >> .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_XUPNPD/d' .config
-        echo    "CONFIG_FIRMWARE_INCLUDE_XUPNPD=y" >> .config
+        echo    "CONFIG_FIRMWARE_INCLUDE_XUPNPD=y" >> .config ### Include xUPNPd IPTV mediaserver. ~0.3MB
         sed -i '/CONFIG_FIRMWARE_INCLUDE_FFMPEG_NEW/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_FFMPEG_NEW=n" >> .config
         ##########################################CPU超频###############################################################
         sed -i '/CONFIG_FIRMWARE_INCLUDE_OC/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_OC=n" >> .config #CPU超频开关
         sed -i '/CONFIG_FIRMWARE_MT7621_OC/d' .config
-        echo    'CONFIG_FIRMWARE_MT7621_OC="0x312"' >> .config #此处填写对应频率的十六进制：1000Mhz=0x312 1100Mhz=0x362 1120Mhz=0x372 1200Mhz=0x3B2
+        echo    'CONFIG_FIRMWARE_MT7621_OC="0x362"' >> .config #此处填写对应频率的十六进制：1000Mhz=0x312 1100Mhz=0x362 1120Mhz=0x372 1200Mhz=0x3B2
         #########################################################################################
         #自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
         #格式如下：
