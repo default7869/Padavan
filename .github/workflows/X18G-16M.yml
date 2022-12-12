@@ -1,6 +1,5 @@
 #修改TNAME: K2P 中的K2P为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
-#2022-12-12:工作需要增加VPN Server和VPN Client,增加openssl,openVPN,openSSH,xUPNPd,VLMCSD,ttyd,WIREGUARD（删除SSPlus,MT7621AT性能垃圾，翻墙用旁路由）
-name: Build X18G-16M-128M
+name: Build X18G-16M-128M-SSP
 on: 
   release:
     types: [published]
@@ -60,11 +59,11 @@ jobs:
         echo    "CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT=n" >> .config #SCUTCLIENT
         ################################################################################################
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_SERVER/d' .config #删除配置项SOFTETHERVPN
-        echo    "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_SERVER=y" >> .config #SOFTETHERVPN
+        echo    "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_SERVER=n" >> .config #SOFTETHERVPN
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CLIENT/d' .config #删除配置项SOFTETHERVPN
-        echo    "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CLIENT=y" >> .config #SOFTETHERVPN
+        echo    "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CLIENT=n" >> .config #SOFTETHERVPN
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CMD/d' .config #删除配置项SOFTETHERVPN
-        echo    "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CMD=y" >> .config #SOFTETHERVPN
+        echo    "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CMD=n" >> .config #SOFTETHERVPN
         ################################################################################################
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS/d' .config #删除配置项SS plus+
         echo    "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config #SS plus+
@@ -96,8 +95,6 @@ jobs:
         echo    "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config #内网穿透zerotier ~1.3M
         sed -i '/CONFIG_FIRMWARE_INCLUDE_TUNSAFE/d' .config #删除配置项TUNSAFE
         echo    "CONFIG_FIRMWARE_INCLUDE_TUNSAFE=n" >> .config #TUNSAFE
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_WIREGUARD/d' .config #删除配置项WIREGUARD
-        echo    "CONFIG_FIRMWARE_INCLUDE_WIREGUARD=y" >> .config #WIREGUARD
         ################################################################################################
         sed -i '/CONFIG_FIRMWARE_INCLUDE_ALIDDNS/d' .config #删除配置项阿里DDNS
         echo    "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=n" >> .config #阿里DDNS
@@ -116,11 +113,11 @@ jobs:
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SRELAY/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_SRELAY=n" >> .config #可以不集成
         sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENVPN/d' .config
-        echo    "CONFIG_FIRMWARE_INCLUDE_OPENVPN=y" >> .config #openVPN
+        echo    "CONFIG_FIRMWARE_INCLUDE_OPENVPN=n" >> .config #openVPN
         sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENSSH/d' .config
-        echo    "CONFIG_FIRMWARE_INCLUDE_OPENSSH=y" >> .config #openssh
+        echo    "CONFIG_FIRMWARE_INCLUDE_OPENSSH=n" >> .config #openssh
         sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE/d' .config
-        echo    "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y" >> .config #openssl二进制文件
+        echo    "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=n" >> .config #openssl二进制文件
         sed -i '/CONFIG_FIRMWARE_INCLUDE_TCPDUMP/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_TCPDUMP=n" >> .config #"tcpdump" utility. ~0.6MB
         sed -i '/CONFIG_FIRMWARE_INCLUDE_DOGCOM/d' .config
@@ -131,10 +128,6 @@ jobs:
         echo    "CONFIG_FIRMWARE_INCLUDE_NJIT_CLIENT=n" >> .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_NAPT66/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_NAPT66=n" >> .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_VLMCSD/d' .config
-        echo    "CONFIG_FIRMWARE_INCLUDE_VLMCSD=n" >> .config
-        sed -i '/CONFIG_FIRMWARE_INCLUDE_TTYD/d' .config
-        echo    "CONFIG_FIRMWARE_INCLUDE_TTYD=n" >> .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_LRZSZ/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_LRZSZ=n" >> .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_HTOP/d' .config
@@ -148,7 +141,7 @@ jobs:
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SOCAT/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_SOCAT=n" >> .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_XUPNPD/d' .config
-        echo    "CONFIG_FIRMWARE_INCLUDE_XUPNPD=y" >> .config
+        echo    "CONFIG_FIRMWARE_INCLUDE_XUPNPD=n" >> .config
         sed -i '/CONFIG_FIRMWARE_INCLUDE_FFMPEG_NEW/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_FFMPEG_NEW=n" >> .config
         ##########################################CPU超频###############################################################
