@@ -14,10 +14,11 @@
 #undef  BOARD_GPIO_BTN_WPS
 #define BOARD_GPIO_LED_INVERTED		/* LED pins value is inverted (1: LED show, 0: LED hide) */
 #undef  BOARD_GPIO_LED_ALL
-#undef  BOARD_GPIO_LED_WIFI
+//#undef  BOARD_GPIO_LED_WIFI
+#define BOARD_GPIO_LED_WIFI 4
 #define BOARD_GPIO_LED_WAN	 3
-#undef  BOARD_GPIO_LED_POWER
-//#define BOARD_GPIO_LED_POWER 4
+//#undef  BOARD_GPIO_LED_POWER
+#define BOARD_GPIO_LED_POWER 4
 #undef  BOARD_GPIO_LED_LAN
 #undef  BOARD_GPIO_LED_USB
 #undef  BOARD_GPIO_LED_ROUTER
