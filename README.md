@@ -1,3 +1,6 @@
+2023-10-16：出于自己有X18G和360F5Pro的原因，适配此2种路由器，当AP用, 基本无特殊插件
+            (需要添加功能的，自己fork后修改.github目录里面的编译配置文件，并action启动对应目标的编译)
+
 新增了对交换芯片RTL8367S的支持，相关的机型为以MTK7620A/DA为主控外接交换芯片实现千兆有线的水星D12G，Tplink C5 v4等等  
 源码来自于https://gitlab.com/dm38/padavan-ng  
 相关提交为https://gitlab.com/dm38/padavan-ng/-/commit/4ec2acb96dccc268ec23aa71b8f5fcb283b9e122  
