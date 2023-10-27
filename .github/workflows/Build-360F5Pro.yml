@@ -6,7 +6,7 @@ on:
   release:
     types: [published]
   push:
-    tags:
+    标签:
     - 'v*'
   #  branches: 
   #    - master
@@ -68,7 +68,7 @@ jobs:
         echo    "CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CMD=n" >> .config #SOFTETHERVPN
         ################################################################################################
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS/d' .config #删除配置项SS plus+
-        echo    "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=n" >> .config #SS plus+
+        echo    "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >> .config #SS plus+
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SSOBFS/d' .config #删除配置项simple-obfs混淆插件
         echo    "CONFIG_FIRMWARE_INCLUDE_SSOBFS=n" >> .config # simple-obfs混淆插件
         sed -i '/CONFIG_FIRMWARE_INCLUDE_XRAY/d' .config #删除配置项xray
@@ -119,11 +119,11 @@ jobs:
         sed -i '/CONFIG_FIRMWARE_INCLUDE_SFTP/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_SFTP=y" >> .config #Include sftp-server. openssl ~1.2MB, sftp-server ~0.06MB
         sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENSSH/d' .config
-        echo    "CONFIG_FIRMWARE_INCLUDE_OPENSSH=y" >> .config #Include OpenSSH instead of dropbear. openssl ~1.2MB, openssh ~1.0MB
+        echo    "CONFIG_FIRMWARE_INCLUDE_OPENSSH=y" >> .config #Include 打开SSH instead of dropbear. openssl ~1.2MB, openssh ~1.0MB
         sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_OPENSSL_EXE=y" >> .config #openssl二进制文件 ~1.2MB
         sed -i '/CONFIG_FIRMWARE_INCLUDE_OPENVPN/d' .config
-        echo    "CONFIG_FIRMWARE_INCLUDE_OPENVPN=y" >> .config #Include OpenVPN. IPv6 required. openssl ~1.2MB, openvpn ~0.4MB
+        echo    "CONFIG_FIRMWARE_INCLUDE_OPENVPN=y" >> .config #Include 打开VPN. IPv6 required. openssl ~1.2MB, openvpn ~0.4MB
         sed -i '/CONFIG_FIRMWARE_INCLUDE_TCPDUMP/d' .config
         echo    "CONFIG_FIRMWARE_INCLUDE_TCPDUMP=n" >> .config #"tcpdump" utility. ~0.6MB
         sed -i '/CONFIG_FIRMWARE_INCLUDE_DOGCOM/d' .config
